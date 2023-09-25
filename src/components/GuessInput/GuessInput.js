@@ -7,22 +7,12 @@ function GuessInput() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    if (guess.length !== 5) {
-      alert("Word needs to have 5 letters!");
-      return;
-    }
-
     console.log({ guess });
     setGuess(initialGuess);
   };
 
   const handleChange = (e) => {
-    if (guess.length >= 5) {
-      alert("Maximum of 5 letters!");
-    } else {
-      setGuess(e.target.value.toUpperCase());
-    }
+    setGuess(e.target.value.toUpperCase());
   };
 
   return (
@@ -32,6 +22,8 @@ function GuessInput() {
         required
         minLength={5}
         maxLength={5}
+        pattern="[a-zA-Z]{5}"
+        title="5-letter word"
         id="guess-input"
         type="text"
         value={guess}
