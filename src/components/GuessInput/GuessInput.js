@@ -2,7 +2,7 @@ import React from "react";
 
 const initialGuess = "";
 
-function GuessInput({ handleAddGuess }) {
+function GuessInput({ handleAddGuess, ended }) {
   const [guess, setGuess] = React.useState(initialGuess);
 
   const handleSubmit = (e) => {
@@ -29,6 +29,7 @@ function GuessInput({ handleAddGuess }) {
         type="text"
         value={guess}
         onChange={handleChange}
+        disabled={ended}
       />
     </form>
   );
