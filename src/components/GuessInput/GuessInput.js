@@ -1,4 +1,5 @@
 import React from "react";
+import Keyboard from "../Keyboard/Keyboard";
 
 const initialGuess = "";
 
@@ -6,7 +7,7 @@ function GuessInput({ handleAddGuess, ended }) {
   const [guess, setGuess] = React.useState(initialGuess);
 
   const handleSubmit = (e) => {
-    e.preventDefault();
+    e?.preventDefault();
     console.log({ guess });
     setGuess(initialGuess);
     handleAddGuess(guess);
@@ -14,6 +15,32 @@ function GuessInput({ handleAddGuess, ended }) {
 
   const handleChange = (e) => {
     setGuess(e.target.value.toUpperCase());
+  };
+
+  const handleClickKey = (key) => {
+    if (key === "enter") {
+      if (guess.length !== 5) {
+        alert("Word must have 5 letters!");
+        return;
+      }
+
+      handleSubmit();
+      return;
+    }
+
+    if (key === "backspace") {
+      const newGuess = guess.slice(0, guess.length - 1);
+      setGuess(newGuess);
+      return;
+    }
+
+    const newGuess = guess.concat(key);
+    if (newGuess.length > 5) {
+      alert("Maximum length of 5 letters!");
+      return;
+    }
+
+    setGuess(newGuess);
   };
 
   return (
@@ -31,6 +58,7 @@ function GuessInput({ handleAddGuess, ended }) {
         onChange={handleChange}
         disabled={ended}
       />
+      <Keyboard onClickKey={handleClickKey} />
     </form>
   );
 }
