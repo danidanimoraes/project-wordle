@@ -1,20 +1,24 @@
 import React from "react";
 import { NUM_OF_GUESSES_ALLOWED } from "../../constants";
+import { checkGuess } from "../../game-helpers";
 
 const getEmptyArray = (size) => {
   return Array(size).fill();
 };
 
-function GuessList({ guesses }) {
+function GuessList({ guesses, answer }) {
   return (
     <div className="guess-results">
-      {getEmptyArray(NUM_OF_GUESSES_ALLOWED).map((_row, rowIndex) => (
-        <GuessRow
-          key={`guessRow-${rowIndex}`}
-          word={guesses[rowIndex]}
-          index={rowIndex}
-        />
-      ))}
+      {getEmptyArray(NUM_OF_GUESSES_ALLOWED).map((_row, rowIndex) => {
+        const checkedGuess = checkGuess(guesses[rowIndex]?.value, answer);
+        return (
+          <GuessRow
+            key={`guessRow-${rowIndex}`}
+            word={checkedGuess}
+            index={rowIndex}
+          />
+        );
+      })}
     </div>
   );
 }
@@ -22,11 +26,17 @@ function GuessList({ guesses }) {
 function GuessRow({ word, index }) {
   return (
     <p className="guess">
-      {getEmptyArray(5).map((_col, colIndex) => (
-        <span className="cell" key={`guessCell-${index}.${colIndex}`}>
-          {word?.value[colIndex]}
-        </span>
-      ))}
+      {getEmptyArray(5).map((_col, colIndex) => {
+        const cell = word?.[colIndex];
+        return (
+          <span
+            className={`cell${cell?.status ? " " + cell?.status : ""}`}
+            key={`guessCell-${index}.${colIndex}`}
+          >
+            {cell?.letter}
+          </span>
+        );
+      })}
     </p>
   );
 }
