@@ -2,6 +2,12 @@
 
 ## Joy of React, Project I
 
+### My solution
+
+![Screenshot showing my solution for the project](docs/my-solution.PNG)
+
+### Requirements
+
 In this project, we'll recreate a popular online word game, Wordle:
 
 ![Demo showing the finished product, our Wordle clone](docs/wordle-demo.gif)
@@ -167,7 +173,7 @@ Inside `/src/game-helpers.js`, you'll find a helper function, `checkGuess`. As p
 For example:
 
 ```js
-checkGuess('WHALE', 'LEARN');
+checkGuess("WHALE", "LEARN");
 /*
   Returns:
 
@@ -225,10 +231,7 @@ The user wins the game when their guessed word is identical to the `answer`. The
 
 ```html
 <div class="happy banner">
-  <p>
-    <strong>Congratulations!</strong> Got it in
-    <strong>3 guesses</strong>.
-  </p>
+  <p><strong>Congratulations!</strong> Got it in <strong>3 guesses</strong>.</p>
 </div>
 ```
 
