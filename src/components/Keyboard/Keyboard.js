@@ -30,7 +30,11 @@ function Keyboard({ onClickKey }) {
               })}
             </span>
             {rowIndex === 2 && (
-              <span className="key" onClick={() => onClickKey("backspace")}>
+              <span
+                className="key"
+                onClick={() => onClickKey("backspace")}
+                aria-label="Backspace"
+              >
                 🢠
               </span>
             )}

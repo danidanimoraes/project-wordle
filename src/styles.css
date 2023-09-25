@@ -222,6 +222,21 @@ h1 {
   cursor: pointer;
 }
 
+.restart {
+  display: flex;
+  align-items: center;
+  padding: 8px;
+  background-color: #fff;
+  color: black;
+  border-radius: 6px;
+  width: -moz-fit-content;
+  width: fit-content;
+  height: 60px;
+  margin: auto;
+  margin-top: 16px;
+  font-size: large;
+  line-height: 100px;
+}
 /*
   Modal styles
 

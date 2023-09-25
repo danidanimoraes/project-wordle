@@ -58,6 +58,7 @@ const HappyBanner = ({ numberOfGuesses }) => {
         </strong>
         .
       </p>
+      <RestartButton />
     </div>
   );
 };
@@ -68,6 +69,19 @@ const SadBanner = () => {
       <p>
         Sorry, the correct answer is <strong>{answer}</strong>.
       </p>
+      <RestartButton />
     </div>
+  );
+};
+
+const RestartButton = () => {
+  return (
+    <button
+      className="restart"
+      aria-label="Restart game"
+      onClick={() => window.location.reload()}
+    >
+      RESTART ⟳
+    </button>
   );
 };
