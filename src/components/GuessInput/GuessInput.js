@@ -7,6 +7,12 @@ function GuessInput() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    if (guess.length !== 5) {
+      alert("Word needs to have 5 letters!");
+      return;
+    }
+
     console.log({ guess });
     setGuess(initialGuess);
   };
