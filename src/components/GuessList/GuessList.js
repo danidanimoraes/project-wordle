@@ -8,24 +8,26 @@ const getEmptyArray = (size) => {
 function GuessList({ guesses }) {
   return (
     <div className="guess-results">
-      {getEmptyArray(NUM_OF_GUESSES_ALLOWED).map((_row, rowIndex) => {
-        const rowGuess = guesses[rowIndex];
-        return (
-          <p className="guess" key={`guessRow-${rowIndex}`}>
-            {getEmptyArray(5).map((_col, colIndex) => {
-              return (
-                <span
-                  className="cell"
-                  key={`guessCell-${rowIndex}.${colIndex}`}
-                >
-                  {rowGuess?.value[colIndex]}
-                </span>
-              );
-            })}
-          </p>
-        );
-      })}
+      {getEmptyArray(NUM_OF_GUESSES_ALLOWED).map((_row, rowIndex) => (
+        <GuessRow
+          key={`guessRow-${rowIndex}`}
+          word={guesses[rowIndex]}
+          index={rowIndex}
+        />
+      ))}
     </div>
+  );
+}
+
+function GuessRow({ word, index }) {
+  return (
+    <p className="guess">
+      {getEmptyArray(5).map((_col, colIndex) => (
+        <span className="cell" key={`guessCell-${index}.${colIndex}`}>
+          {word?.value[colIndex]}
+        </span>
+      ))}
+    </p>
   );
 }
 
